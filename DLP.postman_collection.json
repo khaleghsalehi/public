@@ -9,7 +9,7 @@
 	},
 	"item": [
 		{
-			"name": "v1",
+			"name": "v1 (Deprecated)",
 			"item": [
 				{
 					"name": "Administration dashboard",
@@ -2193,22 +2193,16 @@
 			"name": "v2",
 			"item": [
 				{
-					"name": "Policy Management",
+					"name": "Endpoint",
 					"item": [
 						{
-							"name": "Create New Policy",
+							"name": "Client register itself",
 							"request": {
 								"method": "POST",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"policyType\": \"Hardware\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"HQHardwarePolicyChapret2\",\n    \"reportHardwareChangesEnabled\": \"false\",\n    \"reportPlugInOutChangesEnabled\": \"false\",\n    \"enableDevicesReadOnlyAllowed\": \"false\",\n    \"showDisabledDevicesEnabled\": \"false\",\n    \"preventReadingCdEnabled\": \"false\",\n    \"displayNotificationEnabled\": \"false\",\n    \"hardwareItems\": [\n        {\n            \"blockHardware\": \"false\",\n            \"hardware\": [\n                {\n                    \"name\": \"String\",\n                    \"className\": \"String\",\n                    \"classGuid\": \"String\",\n                    \"hardwareId\": \"String\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": " {\n    \"clientType\":\"USER\",\n    \"endPointID\":\"68e2b8b4-6a84-4078-b0a4-88d776be5817\",\n    \"endPointName\":\"devOps in Netherland4\",\n    \"macAddress\":\"00:11:22:33:44:55:66\",\n    \"IPAddress\":\"192.168.2.4\",\n    \"is64Bit\":\"true\",\n    \"agentVersion\":\"123\",\n    \n    \"userID\":\"MCI_Admin\",\n    \"userName\":\"administrstor\",\n    \"email\":\"admin@mci.ir\",\n    \"displayName\":\"Admin\",\n    \"displayFamil\":\"\",\n    \"description\":\"\",\n\n    \"timeStamp\":\"1715008030\",\n    \"groupID\":\"5882777e-0749-4f8d-bfe5-2e4e9360cf19\",\n    \"groupName\":\"default\"\n }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2216,7 +2210,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/createNewPolicy?policyType=Printer",
+									"raw": "http://testdlp.com:8080/v1/endpointRegister",
 									"protocol": "http",
 									"host": [
 										"testdlp",
@@ -2224,67 +2218,20 @@
 									],
 									"port": "8080",
 									"path": [
-										"admin",
-										"v2",
-										"createNewPolicy"
-									],
-									"query": [
-										{
-											"key": "policyType",
-											"value": "Printer"
-										}
+										"v1",
+										"endpointRegister"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Delete Policy",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/deletePolicy?policyName=HQHardwarePolicy",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"deletePolicy"
-									],
-									"query": [
-										{
-											"key": "policyName",
-											"value": "HQHardwarePolicy"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Policy List",
+							"name": "Client get policy",
 							"request": {
 								"method": "GET",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/getPolicyList?page=int&size=int&policyType=<Enum>",
+									"raw": "http://testdlp.com:8080/v1/getPolicy?endPointID=68e2b8b4-6a84-4078-b0a4-88d776be5816",
 									"protocol": "http",
 									"host": [
 										"testdlp",
@@ -2292,25 +2239,13 @@
 									],
 									"port": "8080",
 									"path": [
-										"admin",
-										"v2",
-										"getPolicyList"
+										"v1",
+										"getPolicy"
 									],
 									"query": [
 										{
-											"key": "page",
-											"value": "int",
-											"description": "Start=0"
-										},
-										{
-											"key": "size",
-											"value": "int",
-											"description": "Min=16,  Maxsize= 128 "
-										},
-										{
-											"key": "policyType",
-											"value": "<Enum>",
-											"description": "<Enum>"
+											"key": "endPointID",
+											"value": "68e2b8b4-6a84-4078-b0a4-88d776be5816"
 										}
 									]
 								}
@@ -2318,18 +2253,26 @@
 							"response": []
 						},
 						{
-							"name": "Search Policy",
+							"name": "Client send event log",
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
-										"key": "token",
-										"value": "",
-										"type": "text"
+										"key": "endPointID",
+										"value": "68e2b8b4-6a84-4078-b0a4-88d776be5817"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeStamp\": \"1715008030\",\n    \"policyName\": \"XYZ-DDD\",\n    \"endPointID\": \"68e2b8b4-6a84-4078-b0a4-88d776be5817\",\n    \"endPointName\": \"node4c5-bxxbxxbx\",\n    \"logLevel\": \"DEBUG\",\n    \"localIP\": \"192.168.1.14\",\n    \"clientGroupName\": \"nodegcggdf193\",\n    \"moduleName\": \"harxdware\",\n    \"subModule\": \"usb\",\n    \"userName\": \"administrator\",\n    \"userGroup\": \"MCI-dev\",\n    \"eventDescription\": \"USb blocked for security reason\",\n    \"action\": \"BLOCK\",\n    \"keyValue\": \"pritner1|b123,usb4|disable,blah|blah,kkk|mmm\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/searchPolicy?policyType=xyz&policyName=HQHardwarePolicy",
+									"raw": "http://testdlp.com:8080/v1/getLog",
 									"protocol": "http",
 									"host": [
 										"testdlp",
@@ -2337,20 +2280,212 @@
 									],
 									"port": "8080",
 									"path": [
-										"admin",
-										"v2",
-										"searchPolicy"
+										"v1",
+										"getLog"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client ws (whats up?)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/ws?endPointID=7bda7d7c-0f8b-4769-97c1-39966b02ffac",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"ws"
 									],
 									"query": [
 										{
-											"key": "policyType",
-											"value": "xyz",
-											"description": "<Enum>"
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966b02ffac"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client query information",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/queryEndpointInfo?endPointID=7bda7d7c-0f8b-4769-97c1-39966b02ffdd",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"queryEndpointInfo"
+									],
+									"query": [
+										{
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966b02ffdd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client get server version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/getServerVersion",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"getServerVersion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client get update and  package Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/getUpdatePackageId?endPointID=7bda7d7c-0f8b-4769-97c1-39966b02fffc",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"getUpdatePackageId"
+									],
+									"query": [
+										{
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966b02fffc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client get result (belong for request by uuid)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/getRequestResult?endPointID=7bda7d7c-0f8b-4769-97c1-39966b02ffac&requestID=4eca28a5-9872-4859-95e9-1c8af484f33f",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"getRequestResult"
+									],
+									"query": [
+										{
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966b02ffac"
 										},
 										{
-											"key": "policyName",
-											"value": "HQHardwarePolicy",
-											"description": "String"
+											"key": "requestID",
+											"value": "4eca28a5-9872-4859-95e9-1c8af484f33f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client send request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966bfffff5",
+											"type": "text"
+										},
+										{
+											"key": "requestType",
+											"value": "DECRYPTION",
+											"type": "text"
+										},
+										{
+											"key": "requestDescription",
+											"value": "I want to decrypt file attached via post",
+											"type": "text"
+										},
+										{
+											"key": "fileName",
+											"value": "zilla.xltx",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1ef1db8c-f0f0-4230-a5d0-a4e0d2a91452"
+										},
+										{
+											"key": "requiredKey",
+											"value": "abcde-fghijk-lmnop-qrstuvw",
+											"type": "text"
+										},
+										{
+											"key": "extraData",
+											"value": "{\"subject\": \"hello\",\"value\": \"1000\",\"readOnly\": \"false\"}",
+											"type": "text"
+										},
+										{
+											"key": "timeStamp",
+											"value": "1032568516",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://testdlp.com:8080/v1/registerRequest?endPointID=7bda7d7c-0f8b-4769-97c1-39966bfffff5",
+									"protocol": "http",
+									"host": [
+										"testdlp",
+										"com"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"registerRequest"
+									],
+									"query": [
+										{
+											"key": "endPointID",
+											"value": "7bda7d7c-0f8b-4769-97c1-39966bfffff5"
 										}
 									]
 								}
@@ -2358,241 +2493,596 @@
 							"response": []
 						}
 					],
-					"description": "لطفا این بخش رو ویرایش نکنید. اگر تغییراتی لازم بود بعد از اعلام شما انجام خواهد شد.\n\nآخرین بروزرسانی: 10:00 مورخه شنبه - 10 آذر ۱۴۰۳\n\n# Create New Policy / Json body Per Policy Components:\n\n**Policy Type:** Printer\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"Printer\",\"isEmptyPolicy\": \"false\",  \"name\": \"sample_name_12\",  \"virtualPrinterControlEnabled\": \"false\",  \"physicalPrinterControlEnabled\": \"false\",  \"watermarkEnabled\": \"false\",  \"watermarkText\": \"hellow_text\",  \"watermarkOnTextEnabled\": \"false\",  \"customWatermarkEnabled\": \"false\",  \"watermarkColumnCount\": 1,  \"watermarkRowCount\": 1,  \"watermarkDegree\": 1,  \"watermarkFontName\": \"fontName\",  \"watermarkFontSize\": 1,  \"watermarkFontColor\": \"fontName\",  \"useIdentificationCode\": \"false\",  \"savePrintPreviewEnabled\": \"false\",  \"printerUsageLogEnabled\": \"false\",  \"grantPrintPermissionToUserByAdminEnabled\": \"false\"}\n\n ```\n\n---\n\n**Policy Type:** Document\n\n**Json Body:**\n\n``` json\n{\n    \"policyType\": \"Document\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"String\",\n    \"inactiveWhenNetworkDisconnectedEnabled\": \"false\",\n    \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n    \"directEncryptionAllowed\": \"false\",\n    \"directDecryptionAllowed\": \"false\",\n    \"sendRequestedFilesToServerEnabled\": \"false\",\n    \"shadowCopyEnabled\": \"false\",\n    \"reportFilesCryptographyEnabled\": \"false\",\n    \"saveCryptoKeyInUserSystemEnabled\": \"false\",\n    \"autoEncryptionEnabled\": \"false\",\n    \"applicationPackagesEncryptionEnabled\": \"false\",\n    \"permanentAutoCryptographyEnabled\": \"false\",\n    \"checkSystemOnRestartEnabled\": \"false\",\n    \"scanExistingFilesEnabled\": \"false\",\n    \"encryptExternalStorageFilesEnabled\": \"false\",\n    \"autoEncryptionFileExtension\": \"String\",\n    \"hotFolders\": [\n        \"string\"\n    ],\n    \"coolFolders\": [\n        \"string\"\n    ],\n    \"maximumAllowedCharactersForCopy\": 0,\n    \"externalStorageControl\": \"false\",\n    \"externalControlPolicyList\": [\n        {\n            \"typeGroup\": \"String\",\n            \"blockCopyToExternal\": \"false\",\n            \"blockCopyToShare\": \"false\",\n            \"blockReadFromExternal\": \"false\",\n            \"blockReadFromShare\": \"false\",\n            \"limitWriteSize\": 0\n        }\n    ],\n    \"violationLoggingEnabled\": \"false\",\n    \"applications\": [\n        {\n            \"applicationFileName\": \"String\",\n            \"packageNameDocument\": \"String\",\n            \"applicationCyclicRedundancyCheck\": \"String\",\n            \"applicationPattern\": \"String\",\n            \"companyNameDocument\": \"String\",\n            \"originalNameDocument\": \"String\",\n            \"productNameDocument\": \"String\",\n            \"internalNameDocument\": \"String\",\n            \"commandLineDocument\": \"String\",\n            \"dynamicInitialVectorEnabledDocument\": \"false\",\n            \"encryptionEnabledDocument\": \"false\",\n            \"encryptOnOpenEnabledDocument\": \"false\",\n            \"usableByTaggingDocument\": \"false\",\n            \"whiteListDocument\": \"String\",\n            \"autoListDocument\": \"String\",\n            \"backupListDocument\": \"String\",\n            \"antiRansomwareEnabledDocument\": \"false\",\n            \"cryptographyEnabledDocument\": \"false\",\n            \"justDecryptionEnabledDocument\": \"false\",\n            \"clipboardControlEnabledDocument\": \"false\",\n            \"imagingControlEnabledDocument\": \"false\",\n            \"printControlEnabledDocument\": \"false\",\n            \"applyWatermarkEnabledDocument\": \"false\",\n            \"networkControlEnabledDocument\": \"false\",\n            \"cryptographyInOleEnabledDocument\": \"false\",\n            \"onlyDecryptionInOleEnabledDocument\": \"false\"\n        }\n    ],\n    \"tags\": [\n        {\n            \"name\": \"String\",\n            \"tagName\": \"String\",\n            \"classification\": \"String\",\n            \"fileAutoTaggingEnabled\": \"false\",\n            \"manualAddTaggingByUserEnabled\": \"false\",\n            \"manualRemoveTaggingByUserEnabled\": \"false\",\n            \"documentsCryptoEnabled\": \"false\",\n            \"readOnlyEnabled\": \"false\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"false\",\n            \"clipboardControlEnabled\": \"false\",\n            \"printControlEnabled\": \"false\",\n            \"addWatermarkEnabled\": \"false\",\n            \"autoTaggingHotFolders\": [\n                \"String\"\n            ],\n            \"keyWords\": [\n                \"String\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"String\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                {\n                    \"applicationFileNameTagged\": \"String\",\n                    \"packageNameTagged\": \"String\",\n                    \"applicationCyclicRedundancyCheckTagged\": \"String\",\n                    \"applicationPatternTagged\": \"String\",\n                    \"companyNameTagged\": \"String\",\n                    \"originalNameTagged\": \"String\",\n                    \"productNameTagged\": \"String\",\n                    \"internalNameTagged\": \"String\",\n                    \"commandLineTagged\": \"String\",\n                    \"dynamicInitialVectorEnabledTagged\": \"false\",\n                    \"encryptionEnabledTagged\": \"false\",\n                    \"encryptOnOpenEnabledTagged\": \"false\",\n                    \"usableByTaggingTagged\": \"false\",\n                    \"whiteListTagged\": \"String\",\n                    \"autoListTagged\": \"String\",\n                    \"backupListTagged\": \"String\"\n                }\n            ],\n            \"autoTaggingApplications\": [\n                {\n                    \"applicationFileNameDocument\": \"String\",\n                    \"packageName\": \"String\",\n                    \"applicationCyclicRedundancyCheckDocument\": \"String\",\n                    \"applicationPatternDocument\": \"String\",\n                    \"companyName\": \"String\",\n                    \"originalName\": \"String\",\n                    \"productName\": \"String\",\n                    \"internalName\": \"String\",\n                    \"commandLine\": \"String\",\n                    \"dynamicInitialVectorEnabled\": \"false\",\n                    \"encryptionEnabled\": \"false\",\n                    \"encryptOnOpenEnabled\": \"false\",\n                    \"usableByTagging\": \"false\",\n                    \"whiteList\": \"String\",\n                    \"autoList\": \"String\",\n                    \"backupList\": \"String\"\n                }\n            ]\n        }\n    ]\n}\n\n ```\n\n**Policy Type:** General\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"General\",\"isEmptyPolicy\": \"false\",  \"name\": \"String\",  \"sendClientErrorsAndEventsEnabled\": \"false\",  \"showIconOnFileEnabled\":\"false\",  \"injectionEnabled\": \"false\",  \"showMenuOnRightClickEnabled\":\"false\",  \"showIconInSystemTrayEnabled\": \"false\",  \"selfProtectionEnabled\":\"false\",  \"screenCapturingToolsControlEnabled\": \"false\",  \"showNotificationsEnabled\":\"false\",  \"saveCryptoKeyLocallyEnabled\": \"false\",  \"clientStatusCheckingTimeInterval\": 0,  \"locallySaveLogIfSendingIsNotPossibleEnabled\": \"false\",  \"maximumLocalLogsStorageSpacePercentage\": 0,  \"adminPassword\": \"String\"}\n\n ```\n\n---\n\n**Policy Type:** Hardware\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"Hardware\",\"isEmptyPolicy\": \"false\",  \"name\": \"String\",  \"reportHardwareChangesEnabled\": \"false\",  \"reportPlugInOutChangesEnabled\": \"false\",  \"enableDevicesReadOnlyAllowed\": \"false\",  \"showDisabledDevicesEnabled\": \"false\",  \"preventReadingCdEnabled\": \"false\",  \"displayNotificationEnabled\": \"false\",  \"hardwareItems\": [    {      \"blockHardware\": \"false\",      \"hardware\": {        \"name\": \"String\",        \"className\": \"String\",        \"classGuid\": \"String\",        \"hardwareId\": \"String\"      }    }  ]}\n\n ```\n\n---\n\n**Policy Type:** Internet\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"Internet\",\"isEmptyPolicy\": \"false\",  \"name\": \"String\",  \"reportUrlsEnabled\": \"false\",  \"reportBlockedUrlsEnabled\": \"false\",  \"reportSslTslEnabled\": \"false\",  \"blockOtherURL\": \"false\",  \"urls\": [    {      \"url\": \"String\",      \"process\": \"String\",      \"blockAccess\": \"false\"    }  ],  \"emailControlsBlackList\": \"false\",  \"emailControls\": [    {      \"keyword\": \"String\",      \"sender\": \"String\",      \"expirationTime\": 0,      \"attachmentEncryptionEnabled\": \"false\",      \"attachmentDecryptionEnabled\": \"false\",      \"expiredEmailBackupEnabled\": \"false\",      \"reportEmailEnabled\": \"false\",      \"allowSend\": \"false\"    }  ],  \"autoPasswordsRemovalEnabled\": \"false\",  \"domainListForPasswordRemoval\": [    \"String\"  ]}\n\n ```\n\n---\n\n**Policy Type:** Monitoring\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"Monitoring\",\"isEmptyPolicy\": \"false\",  \"name\": \"String\",  \"serviceList\": \"false\",  \"driverList\": \"false\",  \"updateList\": \"false\",  \"softwareList\": \"false\",  \"startupList\": \"false\",  \"systemActionHistory\": \"false\",  \"eventLogActivated\": \"false\",  \"reportClipboardEnabled\": \"false\",  \"registryChangesReportEnabled\": \"false\",  \"registryChangesReportPaths\": [    \"String\"  ],  \"accessReportCreationEnabled\": \"false\",  \"accessReportWriteEnabled\": \"false\",  \"accessReportReadEnabled\": \"false\",  \"accessReportTracingEnabled\": \"false\",  \"accessReportRemovalEnabled\": \"false\",  \"accessReportRenamingEnabled\": \"false\",  \"accessReportSecurityAttributeChangeEnabled\": \"false\",  \"accessReportPaths\": [    {      \"path\": \"String\",      \"monitorShare\": \"false\",      \"monitorLocalFiles\": \"false\",      \"monitorExternalStorage\": \"false\",      \"excludeThis\": \"false\"    }  ]}\n\n ```\n\n---\n\n**Policy Type:** Network\n\n**Json Body:**\n\n``` json\n{  \"policyType\":\"Network\",\"isEmptyPolicy\": \"false\",  \"name\": \"String\",  \"icmpTrafficRegistrationRate\": 0,  \"networkLogsReportEnabled\": \"false\",  \"networkActivityLogsReportEnabled\": \"false\",  \"blockUndefinedConnection\": \"false\",  \"networkFirewalls\": [    {      \"process\": \"String\",      \"tcpProtocol\": \"false\",      \"udpProtocol\": \"false\",      \"inputDirection\": \"false\",      \"outputDirection\": \"false\",      \"localAddress\": \"String\",      \"localPort\": \"String\",      \"remoteAddress\": \"String\",      \"remotePort\": \"String\",      \"blockConnection\": \"false\"    }  ]}\n\n ```"
+					"description": "لطفا تغییرات رو اینجاد بزارید."
 				},
 				{
-					"name": "Group Managment",
+					"name": "Server",
 					"item": [
 						{
-							"name": "Create New Group",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"groupName\": \"Azadi\",\n    \"parentName\": \"Vanak Branchk\",\n    \"config\": \"kid\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
+							"name": "Group Managment",
+							"item": [
+								{
+									"name": "Create New Group",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"groupName\": \"Azadi\",\n    \"parentName\": \"Vanak Branchk\",\n    \"config\": \"kid\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/createNewGroup",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"createNewGroup"
+											]
 										}
-									}
+									},
+									"response": []
 								},
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/createNewGroup",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"createNewGroup"
-									]
+								{
+									"name": "Remove Group",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=GF1",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"deleteGroup"
+											],
+											"query": [
+												{
+													"key": "groupName",
+													"value": "GF1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Group List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/v2/plus/getGroupList",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"v2",
+												"plus",
+												"getGroupList"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Config List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/getConfigList",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"getConfigList"
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							]
 						},
 						{
-							"name": "Remove Group",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=GF1",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"deleteGroup"
-									],
-									"query": [
+							"name": "Authentication",
+							"item": [
+								{
+									"name": "Admin Logout",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/logout",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"logout"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Admin Login",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/login",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Policy",
+							"item": [
+								{
+									"name": "Policy Management",
+									"item": [
 										{
-											"key": "groupName",
-											"value": "GF1"
+											"name": "Create New Policy",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"policyType\": \"Document\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"UniqeNameOfPolicy\",\n    \"inactiveWhenNetworkDisconnectedEnabled\": \"boolean\",\n    \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n    \"directEncryptionAllowed\": \"boolean\",\n    \"directDecryptionAllowed\": \"boolean\",\n    \"sendRequestedFilesToServerEnabled\": \"boolean\",\n    \"shadowCopyEnabled\": \"boolean\",\n    \"reportFilesCryptographyEnabled\": \"boolean\",\n    \"saveCryptoKeyInUserSystemEnabled\": \"boolean\",\n    \"violationLoggingEnabled\": \"boolean\",\n    \"maximumAllowedCharactersForCopy\": 0,\n    \"autoEncryptionEnabled\": \"boolean\",\n    \"applicationPackagesEncryptionEnabled\": \"boolean\",\n    \"permanentAutoCryptographyEnabled\": \"boolean\",\n    \"checkSystemOnRestartEnabled\": \"boolean\",\n    \"scanExistingFilesEnabled\": \"boolean\",\n    \"EncryptionryptExternalStorageFilesEnabled\": \"boolean\",\n    \"autoEncryptionFileExtension\": \"string\",\n    \"hotFolders\": [\n        \"string\"\n    ],\n    \"coolFolders\": [\n        \"string\"\n    ],\n    \"externalStorageControl\": \"boolean\",\n    \"externalControlPolicyList\": [\n        {\n            \"typeGroup\": \"string\",\n            \"blockCopyToExternal\": \"boolean\",\n            \"blockCopyToShare\": \"boolean\",\n            \"blockReadFromExternal\": \"boolean\",\n            \"blockReadFromShare\": \"boolean\",\n            \"limitWriteSize\": 0\n        }\n    ],\n    \"applications\": [\n        {\n            \"id\": \"string|number\",\n            \"applicationFileName\": \"string\",\n            \"packageNameDocument\": \"string\",\n            \"additionalConfig\": {\n                \"antiRansomwareEnabledDocument\": \"boolean\",\n                \"cryptographyEnabledDocument\": \"boolean\",\n                \"justDecryptionEnabledDocument\": \"boolean\",\n                \"clipboardControlEnabledDocument\": \"boolean\",\n                \"imagingControlEnabledDocument\": \"boolean\",\n                \"printControlEnabledDocument\": \"boolean\",\n                \"applyWatermarkEnabledDocument\": \"boolean\",\n                \"networkControlEnabledDocument\": \"boolean\",\n                \"cryptographyInOleEnabledDocument\": \"boolean\",\n                \"onlyDecryptionInOleEnabledDocument\": \"boolean\"\n            }\n        }\n    ],\n    \"tags\": [\n        {\n            \"name\": \"string\",\n            \"tagName\": \"string\",\n            \"classification\": \"string\",\n            \"fileAutoTaggingEnabled\": \"boolean\",\n            \"manualAddTaggingByUserEnabled\": \"boolean\",\n            \"manualRemoveTaggingByUserEnabled\": \"boolean\",\n            \"documentsCryptoEnabled\": \"boolean\",\n            \"readOnlyEnabled\": \"boolean\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"boolean\",\n            \"clipboardControlEnabled\": \"boolean\",\n            \"printControlEnabled\": \"boolean\",\n            \"addWatermarkEnabled\": \"boolean\",\n            \"autoTaggingHotFolders\": [\n                \"string\"\n            ],\n            \"keyWords\": [\n                \"string\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"string\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ],\n            \"autoTaggingApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ]\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/createNewPolicy?policyType=Document",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"createNewPolicy"
+													],
+													"query": [
+														{
+															"key": "policyType",
+															"value": "Document"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Delete Policy",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/deletePolicy?policyName=HQHardwarePolicy",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"deletePolicy"
+													],
+													"query": [
+														{
+															"key": "policyName",
+															"value": "HQHardwarePolicy"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Policy List",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/getPolicyList?page&pageSize&policyType&q",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"getPolicyList"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": null,
+															"description": "(optional) number"
+														},
+														{
+															"key": "pageSize",
+															"value": null,
+															"description": "(optional) number"
+														},
+														{
+															"key": "policyType",
+															"value": null,
+															"description": "(optional options) general|document|hardware|internet|printer|monitoring|network"
+														},
+														{
+															"key": "q",
+															"value": null,
+															"description": "(optional) for search in name of policies"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Search Policy",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/searchPolicy?policyType=xyz&policyName=UniqeNameOfPolicyPrinter1",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"searchPolicy"
+													],
+													"query": [
+														{
+															"key": "policyType",
+															"value": "xyz",
+															"description": "<Enum>"
+														},
+														{
+															"key": "policyName",
+															"value": "UniqeNameOfPolicyPrinter1",
+															"description": "String"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Policy Details",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/getPolicyInfo?policyName=UniqeNameOfPolicyPrinter1",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"getPolicyInfo"
+													],
+													"query": [
+														{
+															"key": "policyName",
+															"value": "UniqeNameOfPolicyPrinter1"
+														}
+													]
+												}
+											},
+											"response": []
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Group List",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://testdlp.com:8080/v2/plus/getGroupList",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
 									],
-									"port": "8080",
-									"path": [
-										"v2",
-										"plus",
-										"getGroupList"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Config List",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/getConfigList",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"getConfigList"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Authentication",
-					"item": [
-						{
-							"name": "Admin Logout",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/logout",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"logout"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Admin Login",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									"description": "لطفا این بخش رو ویرایش نکنید. اگر تغییراتی لازم بود بعد از اعلام شما انجام خواهد شد.\n\nآخرین بروزرسانی: 14:00 مورخه شنبه - 22 آذر ۱۴۰۳\n\n# Create New Policy / Json body Per Policy Components:\n\n**Policy Type:** Printer\n\n**Json Body:**\n\n``` json\n{\n  \"policyType\": \"Printer\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"virtualPrinterControlEnabled\": \"false\",\n  \"physicalPrinterControlEnabled\": \"false\",\n  \"watermarkEnabled\": \"false\",\n  \"watermarkText\": \"hellow_text\",\n  \"watermarkOnTextEnabled\": \"false\",\n  \"customWatermarkEnabled\": \"false\",\n  \"watermarkColumnCount\": 1,\n  \"watermarkRowCount\": 1,\n  \"watermarkDegree\": 1,\n  \"watermarkFontName\": \"fontName\",\n  \"watermarkFontSize\": 1,\n  \"watermarkFontColor\": \"fontName\",\n  \"useIdentificationCode\": \"false\",\n  \"savePrintPreviewEnabled\": \"false\",\n  \"printerUsageLogEnabled\": \"false\",\n  \"grantPrintPermissionToUserByAdminEnabled\": \"false\"\n}\n\n ```\n\n---\n\n**Policy Type:** Document\n\n**Json Body:**\n\n``` json\n{\n    \"policyType\": \"Document\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"UniqeNameOfPolicy\",\n    \"inactiveWhenNetworkDisconnectedEnabled\": \"boolean\",\n    \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n    \"directEncryptionAllowed\": \"boolean\",\n    \"directDecryptionAllowed\": \"boolean\",\n    \"sendRequestedFilesToServerEnabled\": \"boolean\",\n    \"shadowCopyEnabled\": \"boolean\",\n    \"reportFilesCryptographyEnabled\": \"boolean\",\n    \"saveCryptoKeyInUserSystemEnabled\": \"boolean\",\n    \"violationLoggingEnabled\": \"boolean\",\n    \"maximumAllowedCharactersForCopy\": 0,\n    \"autoEncryptionEnabled\": \"boolean\",\n    \"applicationPackagesEncryptionEnabled\": \"boolean\",\n    \"permanentAutoCryptographyEnabled\": \"boolean\",\n    \"checkSystemOnRestartEnabled\": \"boolean\",\n    \"scanExistingFilesEnabled\": \"boolean\",\n    \"EncryptionryptExternalStorageFilesEnabled\": \"boolean\",\n    \"autoEncryptionFileExtension\": \"string\",\n    \"hotFolders\": [\n        \"string\"\n    ],\n    \"coolFolders\": [\n        \"string\"\n    ],\n    \"externalStorageControl\": \"boolean\",\n    \"externalControlPolicyList\": [\n        {\n            \"typeGroup\": \"string\",\n            \"blockCopyToExternal\": \"boolean\",\n            \"blockCopyToShare\": \"boolean\",\n            \"blockReadFromExternal\": \"boolean\",\n            \"blockReadFromShare\": \"boolean\",\n            \"limitWriteSize\": 0\n        }\n    ],\n    \"applications\": [\n        {\n            \"id\": \"string|number\",\n            \"applicationFileName\": \"string\",\n            \"packageNameDocument\": \"string\",\n            \"additionalConfig\": {\n                \"antiRansomwareEnabledDocument\": \"boolean\",\n                \"cryptographyEnabledDocument\": \"boolean\",\n                \"justDecryptionEnabledDocument\": \"boolean\",\n                \"clipboardControlEnabledDocument\": \"boolean\",\n                \"imagingControlEnabledDocument\": \"boolean\",\n                \"printControlEnabledDocument\": \"boolean\",\n                \"applyWatermarkEnabledDocument\": \"boolean\",\n                \"networkControlEnabledDocument\": \"boolean\",\n                \"cryptographyInOleEnabledDocument\": \"boolean\",\n                \"onlyDecryptionInOleEnabledDocument\": \"boolean\"\n            }\n        }\n    ],\n    \"tags\": [\n        {\n            \"name\": \"string\",\n            \"tagName\": \"string\",\n            \"classification\": \"string\",\n            \"fileAutoTaggingEnabled\": \"boolean\",\n            \"manualAddTaggingByUserEnabled\": \"boolean\",\n            \"manualRemoveTaggingByUserEnabled\": \"boolean\",\n            \"documentsCryptoEnabled\": \"boolean\",\n            \"readOnlyEnabled\": \"boolean\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"boolean\",\n            \"clipboardControlEnabled\": \"boolean\",\n            \"printControlEnabled\": \"boolean\",\n            \"addWatermarkEnabled\": \"boolean\",\n            \"autoTaggingHotFolders\": [\n                \"string\"\n            ],\n            \"keyWords\": [\n                \"string\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"string\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ],\n            \"autoTaggingApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ]\n        }\n    ]\n}\n\n ```\n\n**Policy Type:** General\n\n**Json Body:**\n\n``` json\n{\n  \"policyType\": \"General\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"sendClientErrorsAndEventsEnabled\": \"false\",\n  \"showIconOnFileEnabled\": \"false\",\n  \"injectionEnabled\": \"false\",\n  \"showMenuOnRightClickEnabled\": \"false\",\n  \"showIconInSystemTrayEnabled\": \"false\",\n  \"selfProtectionEnabled\": \"false\",\n  \"screenCapturingToolsControlEnabled\": \"false\",\n  \"showNotificationsEnabled\": \"false\",\n  \"saveCryptoKeyLocallyEnabled\": \"false\",\n  \"clientStatusCheckingTimeInterval\": 0,\n  \"locallySaveLogIfSendingIsNotPossibleEnabled\": \"false\",\n  \"maximumLocalLogsStorageSpacePercentage\": 0,\n  \"adminPassword\": \"String\"\n}\n\n ```\n\n---\n\n**Policy Type:** Hardware\n\n**Json Body:**\n\n``` json\n{\n  \"policyType\": \"Hardware\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"reportHardwareChangesEnabled\": \"boolean\",\n  \"reportPlugInOutChangesEnabled\": \"boolean\",\n  \"enableDevicesReadOnlyAllowed\": \"boolean\",\n  \"showDisabledDevicesEnabled\": \"boolean\",\n  \"preventReadingCdEnabled\": \"boolean\",\n  \"displayNotificationEnabled\": \"boolean\",\n  \"hardwareItems\": [\n    {\n      \"blockHardware\": \"boolean\",\n      \"name\": \"string\",\n      \"className\": \"string\",\n      \"classGuid\": \"string\",\n      \"hardwareId\": [\"string\"]\n    }\n  ]\n}\n\n ```\n\n---\n\n**Policy Type:** Internet\n\n**Json Body:**\n\n``` json\n{\n  \"policyType\": \"Internet\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"reportUrlsEnabled\": \"false\",\n  \"reportBlockedUrlsEnabled\": \"false\",\n  \"reportSslTslEnabled\": \"false\",\n  \"blockOtherURL\": \"false\",\n  \"urls\": [{ \"url\": \"String\", \"process\": \"String\", \"blockAccess\": \"false\" }],\n  \"emailControlsBlackList\": \"false\",\n  \"emailControls\": [\n    {\n      \"keyword\": \"String\",\n      \"sender\": \"String\",\n      \"expirationTime\": 0,\n      \"attachmentEncryptionEnabled\": \"false\",\n      \"attachmentDecryptionEnabled\": \"false\",\n      \"expiredEmailBackupEnabled\": \"false\",\n      \"reportEmailEnabled\": \"false\",\n      \"allowSend\": \"false\"\n    }\n  ],\n  \"autoPasswordsRemovalEnabled\": \"false\",\n  \"domainListForPasswordRemoval\": [\"string\"]\n}\n\n ```\n\n---\n\n**Policy Type:** Monitoring\n\n**Json Body:**\n\n``` json\n{\n  \"policyType\": \"Monitoring\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"serviceList\": \"false\",\n  \"driverList\": \"false\",\n  \"updateList\": \"false\",\n  \"softwareList\": \"false\",\n  \"startupList\": \"false\",\n  \"systemActionHistory\": \"false\",\n  \"eventLogActivated\": \"false\",\n  \"reportClipboardEnabled\": \"false\",\n  \"registryChangesReportEnabled\": \"false\",\n  \"registryChangesReportPaths\": [\n    \"String\"\n  ],\n  \"accessReportCreationEnabled\": \"false\",\n  \"accessReportWriteEnabled\": \"false\",\n  \"accessReportReadEnabled\": \"false\",\n  \"accessReportTracingEnabled\": \"false\",\n  \"accessReportRemovalEnabled\": \"false\",\n  \"accessReportRenamingEnabled\": \"false\",\n  \"accessReportSecurityAttributeChangeEnabled\": \"false\",\n  \"accessReportPaths\": [\n    {\n      \"path\": \"String\",\n      \"monitorShare\": \"false\",\n      \"monitorLocalFiles\": \"false\",\n      \"monitorExternalStorage\": \"false\",\n      \"excludeThis\": \"false\"\n    }\n  ]\n}\n\n ```\n\n---\n\n**Policy Type:** Network\n\n**Json Body:**\n\n``` json\n  \"policyType\": \"Network\",\n  \"isEmptyPolicy\": \"false\",\n  \"name\": \"UniqeNameOfPolicy\",\n  \"icmpTrafficRegistrationRate\": 0,\n  \"networkLogsReportEnabled\": \"false\",\n  \"networkActivityLogsReportEnabled\": \"false\",\n  \"blockUndefinedConnection\": \"false\",\n  \"networkFirewalls\": [\n    {\n      \"process\": \"String\",\n      \"tcpProtocol\": \"false\",\n      \"udpProtocol\": \"false\",\n      \"inputDirection\": \"false\",\n      \"outputDirection\": \"false\",\n      \"localAddress\": \"String\",\n      \"localPort\": \"String\",\n      \"remoteAddress\": \"String\",\n      \"remotePort\": \"String\",\n      \"blockConnection\": \"false\"\n    }\n  ]\n}\n\n ```"
 								},
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/login",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
+								{
+									"name": "Software Package Management",
+									"item": [
+										{
+											"name": "Create",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"applicationFileName\": \"string\",\n\t\"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n\t\"applicationPattern\": \"string\",\n\t\"companyName\": \"string\",\n\t\"originalName\": \"string\",\n\t\"productName\": \"string\",\n\t\"internalName\": \"string\",\n\t\"commandLine\": \"string\",\n\t\"dynamicInitialVectorEnabled\": false,\n\t\"EncryptionEnabled\": false,\n\t\"EncryptionryptOnOpenEnabled\": false,\n\t\"usableByTagging\": false,\n\t\"whiteList\": [\"string\"],\n\t\"autoList\": [\"string\"],\n\t\"backupList\": [\"string\"]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/softwares",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"softwares"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"applicationFileName\": \"string\",\n\t\"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n\t\"applicationPattern\": \"string\",\n\t\"companyName\": \"string\",\n\t\"originalName\": \"string\",\n\t\"productName\": \"string\",\n\t\"internalName\": \"string\",\n\t\"commandLine\": \"string\",\n\t\"dynamicInitialVectorEnabled\": false,\n\t\"EncryptionEnabled\": false,\n\t\"EncryptionryptOnOpenEnabled\": false,\n\t\"usableByTagging\": false,\n\t\"whiteList\": [\"string\"],\n\t\"autoList\": [\"string\"],\n\t\"backupList\": [\"string\"]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/softwares/:softwareId",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"softwares",
+														":softwareId"
+													],
+													"variable": [
+														{
+															"key": "softwareId",
+															"value": ""
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Delete",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/softwares/:softwareId",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"softwares",
+														":softwareId"
+													],
+													"variable": [
+														{
+															"key": "softwareId",
+															"value": ""
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "List",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/softwares?packageName&companyName",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"softwares"
+													],
+													"query": [
+														{
+															"key": "packageName",
+															"value": null,
+															"description": "optional(filter)"
+														},
+														{
+															"key": "companyName",
+															"value": null,
+															"description": "optional(filter)"
+														}
+													]
+												}
+											},
+											"response": []
+										}
 									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"login"
+									"description": "Softwares are previously named DocPacks\n\n**Get Softwares List Response**\n\n``` json\n{\n  \"data\": [\n    {\n      \"id\": \"integer|uuid\",\n      \"applicationFileName\": \"string\",\n      \"packageName\": \"string\",\n      \"applicationCyclicRedundancyCheck\": \"string\",\n      \"applicationPattern\": \"string\",\n      \"companyName\": \"string\",\n      \"originalName\": \"string\",\n      \"productName\": \"string\",\n      \"internalName\": \"string\",\n      \"commandLine\": \"string\",\n      \"dynamicInitialVectorEnabled\": false,\n      \"EncryptionEnabled\": false,\n      \"EncryptionryptOnOpenEnabled\": false,\n      \"usableByTagging\": false,\n      \"whiteList\": [\"string\"],\n      \"autoList\": [\"string\"],\n      \"backupList\": [\"string\"]\n    }\n  ]\n}\n\n\n ```"
+								},
+								{
+									"name": "Fetch Pack List",
+									"item": [
+										{
+											"name": "Get Software List",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/getSoftwareList",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"getSoftwareList"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Hardware List",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "token",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "http://testdlp.com:8080/admin/v2/getHardwareList",
+													"protocol": "http",
+													"host": [
+														"testdlp",
+														"com"
+													],
+													"port": "8080",
+													"path": [
+														"admin",
+														"v2",
+														"getHardwareList"
+													]
+												}
+											},
+											"response": []
+										}
 									]
 								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Const",
-					"item": [
-						{
-							"name": "Get Software List",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/getSoftwareList",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"getSoftwareList"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Hardware List",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "token",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://testdlp.com:8080/admin/v2/getHardwareList",
-									"protocol": "http",
-									"host": [
-										"testdlp",
-										"com"
-									],
-									"port": "8080",
-									"path": [
-										"admin",
-										"v2",
-										"getHardwareList"
-									]
-								}
-							},
-							"response": []
+							]
 						}
 					]
 				},
