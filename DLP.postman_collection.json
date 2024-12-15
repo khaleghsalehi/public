@@ -5,7 +5,7 @@
 		"description": "**Server Information:**\n\n## 194.33.105.54 testdlp.com\n\nCORS : \\*",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23855748",
-		"_collection_link": "https://universal-capsule-658991.postman.co/workspace/New-Team-Workspace~ff2ac6d8-c524-42ff-82db-dbad505e2faa/collection/23855748-4f1b5f20-ed98-4680-88e1-a800be887375?action=share&source=collection_link&creator=23855748"
+		"_collection_link": "https://universal-capsule-658991.postman.co/workspace/DLP-Project~ff2ac6d8-c524-42ff-82db-dbad505e2faa/collection/23855748-4f1b5f20-ed98-4680-88e1-a800be887375?action=share&source=collection_link&creator=23855748"
 	},
 	"item": [
 		{
@@ -2692,7 +2692,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"policyType\": \"Document\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"UniqeNameOfPolicy\",\n    \"inactiveWhenNetworkDisconnectedEnabled\": \"boolean\",\n    \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n    \"directEncryptionAllowed\": \"boolean\",\n    \"directDecryptionAllowed\": \"boolean\",\n    \"sendRequestedFilesToServerEnabled\": \"boolean\",\n    \"shadowCopyEnabled\": \"boolean\",\n    \"reportFilesCryptographyEnabled\": \"boolean\",\n    \"saveCryptoKeyInUserSystemEnabled\": \"boolean\",\n    \"violationLoggingEnabled\": \"boolean\",\n    \"maximumAllowedCharactersForCopy\": 0,\n    \"autoEncryptionEnabled\": \"boolean\",\n    \"applicationPackagesEncryptionEnabled\": \"boolean\",\n    \"permanentAutoCryptographyEnabled\": \"boolean\",\n    \"checkSystemOnRestartEnabled\": \"boolean\",\n    \"scanExistingFilesEnabled\": \"boolean\",\n    \"EncryptionryptExternalStorageFilesEnabled\": \"boolean\",\n    \"autoEncryptionFileExtension\": \"string\",\n    \"hotFolders\": [\n        \"string\"\n    ],\n    \"coolFolders\": [\n        \"string\"\n    ],\n    \"externalStorageControl\": \"boolean\",\n    \"externalControlPolicyList\": [\n        {\n            \"typeGroup\": \"string\",\n            \"blockCopyToExternal\": \"boolean\",\n            \"blockCopyToShare\": \"boolean\",\n            \"blockReadFromExternal\": \"boolean\",\n            \"blockReadFromShare\": \"boolean\",\n            \"limitWriteSize\": 0\n        }\n    ],\n    \"applications\": [\n        {\n            \"id\": \"string|number\",\n            \"applicationFileName\": \"string\",\n            \"packageNameDocument\": \"string\",\n            \"additionalConfig\": {\n                \"antiRansomwareEnabledDocument\": \"boolean\",\n                \"cryptographyEnabledDocument\": \"boolean\",\n                \"justDecryptionEnabledDocument\": \"boolean\",\n                \"clipboardControlEnabledDocument\": \"boolean\",\n                \"imagingControlEnabledDocument\": \"boolean\",\n                \"printControlEnabledDocument\": \"boolean\",\n                \"applyWatermarkEnabledDocument\": \"boolean\",\n                \"networkControlEnabledDocument\": \"boolean\",\n                \"cryptographyInOleEnabledDocument\": \"boolean\",\n                \"onlyDecryptionInOleEnabledDocument\": \"boolean\"\n            }\n        }\n    ],\n    \"tags\": [\n        {\n            \"name\": \"string\",\n            \"tagName\": \"string\",\n            \"classification\": \"string\",\n            \"fileAutoTaggingEnabled\": \"boolean\",\n            \"manualAddTaggingByUserEnabled\": \"boolean\",\n            \"manualRemoveTaggingByUserEnabled\": \"boolean\",\n            \"documentsCryptoEnabled\": \"boolean\",\n            \"readOnlyEnabled\": \"boolean\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"boolean\",\n            \"clipboardControlEnabled\": \"boolean\",\n            \"printControlEnabled\": \"boolean\",\n            \"addWatermarkEnabled\": \"boolean\",\n            \"autoTaggingHotFolders\": [\n                \"string\"\n            ],\n            \"keyWords\": [\n                \"string\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"string\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ],\n            \"autoTaggingApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ]\n        }\n    ]\n}",
+													"raw": "{\n    \"policyType\": \"Document\",\n    \"isEmptyPolicy\": \"false\",\n    \"name\": \"UniqeNameOfPolicy\",\n    \"inactiveWhenNetworkDisconnectedEnabled\": \"boolean\",\n    \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n    \"directEncryptionAllowed\": \"boolean\",\n    \"directDecryptionAllowed\": \"boolean\",\n    \"sendRequestedFilesToServerEnabled\": \"boolean\",\n    \"shadowCopyEnabled\": \"boolean\",\n    \"reportFilesCryptographyEnabled\": \"boolean\",\n    \"saveCryptoKeyInUserSystemEnabled\": \"boolean\",\n    \"violationLoggingEnabled\": \"boolean\",\n    \"maximumAllowedCharactersForCopy\": 0,\n    \"autoEncryptionEnabled\": \"boolean\",\n    \"applicationPackagesEncryptionEnabled\": \"boolean\",\n    \"permanentAutoCryptographyEnabled\": \"boolean\",\n    \"checkSystemOnRestartEnabled\": \"boolean\",\n    \"scanExistingFilesEnabled\": \"boolean\",\n    \"EncryptionryptExternalStorageFilesEnabled\": \"boolean\",\n    \"autoEncryptionFileExtension\": \"string\",\n    \"hotFolders\": [\n        \"string\"\n    ],\n    \"coolFolders\": [\n        \"string\"\n    ],\n    \"externalStorageControl\": \"boolean\",\n    \"externalControlPolicyList\": [\n        {\n            \"typeGroup\": \"string\",\n            \"blockCopyToExternal\": \"boolean\",\n            \"blockCopyToShare\": \"boolean\",\n            \"blockReadFromExternal\": \"boolean\",\n            \"blockReadFromShare\": \"boolean\",\n            \"limitWriteSize\": 0\n        }\n    ],\n    \"applications\": [\n        {\n            \"uuid\": \"AZaz09\",\n            \"additionalConfig\": {\n                \"antiRansomwareEnabledDocument\": \"boolean\",\n                \"cryptographyEnabledDocument\": \"boolean\",\n                \"justDecryptionEnabledDocument\": \"boolean\",\n                \"clipboardControlEnabledDocument\": \"boolean\",\n                \"imagingControlEnabledDocument\": \"boolean\",\n                \"printControlEnabledDocument\": \"boolean\",\n                \"applyWatermarkEnabledDocument\": \"boolean\",\n                \"networkControlEnabledDocument\": \"boolean\",\n                \"cryptographyInOleEnabledDocument\": \"boolean\",\n                \"onlyDecryptionInOleEnabledDocument\": \"boolean\"\n            }\n        }\n    ],\n    \"tags\": [\n        {\n            \"name\": \"string\",\n            \"tagName\": \"string\",\n            \"classification\": \"string\",\n            \"fileAutoTaggingEnabled\": \"boolean\",\n            \"manualAddTaggingByUserEnabled\": \"boolean\",\n            \"manualRemoveTaggingByUserEnabled\": \"boolean\",\n            \"documentsCryptoEnabled\": \"boolean\",\n            \"readOnlyEnabled\": \"boolean\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"boolean\",\n            \"clipboardControlEnabled\": \"boolean\",\n            \"printControlEnabled\": \"boolean\",\n            \"addWatermarkEnabled\": \"boolean\",\n            \"autoTaggingHotFolders\": [\n                \"string\"\n            ],\n            \"keyWords\": [\n                \"string\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"string\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ],\n            \"autoTaggingApplications\": [\n                {\n                    \"id\": \"string|number\",\n                    \"applicationFileName\": \"string\",\n                    \"packageNameDocument\": \"string\"\n                }\n            ]\n        }\n    ]\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2893,7 +2893,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"applicationFileName\": \"string\",\n\t\"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n\t\"applicationPattern\": \"string\",\n\t\"companyName\": \"string\",\n\t\"originalName\": \"string\",\n\t\"productName\": \"string\",\n\t\"internalName\": \"string\",\n\t\"commandLine\": \"string\",\n\t\"dynamicInitialVectorEnabled\": false,\n\t\"EncryptionEnabled\": false,\n\t\"EncryptionryptOnOpenEnabled\": false,\n\t\"usableByTagging\": false,\n\t\"whiteList\": [\"string\"],\n\t\"autoList\": [\"string\"],\n\t\"backupList\": [\"string\"]\n}",
+													"raw": "{\n    \"uuid\": \"zoro\",\n    \"applicationFileName\": \"string\",\n    \"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n    \"applicationPattern\": \"string\",\n    \"companyName\": \"string\",\n    \"originalName\": \"string\",\n    \"productName\": \"string\",\n    \"internalName\": \"string\",\n    \"commandLine\": \"string\",\n    \"dynamicInitialVectorEnabled\": false,\n    \"EncryptionEnabled\": false,\n    \"EncryptionryptOnOpenEnabled\": false,\n    \"usableByTagging\": false,\n    \"whiteList\": [\n        \"string\"\n    ],\n    \"autoList\": [\n        \"string\"\n    ],\n    \"backupList\": [\n        \"string\"\n    ]\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2901,7 +2901,7 @@
 													}
 												},
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/softwares",
+													"raw": "http://testdlp.com:8080/admin/v2/createSoftwarePack",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2911,7 +2911,7 @@
 													"path": [
 														"admin",
 														"v2",
-														"softwares"
+														"createSoftwarePack"
 													]
 												}
 											},
@@ -2924,7 +2924,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"applicationFileName\": \"string\",\n\t\"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n\t\"applicationPattern\": \"string\",\n\t\"companyName\": \"string\",\n\t\"originalName\": \"string\",\n\t\"productName\": \"string\",\n\t\"internalName\": \"string\",\n\t\"commandLine\": \"string\",\n\t\"dynamicInitialVectorEnabled\": false,\n\t\"EncryptionEnabled\": false,\n\t\"EncryptionryptOnOpenEnabled\": false,\n\t\"usableByTagging\": false,\n\t\"whiteList\": [\"string\"],\n\t\"autoList\": [\"string\"],\n\t\"backupList\": [\"string\"]\n}",
+													"raw": "{\n    \"id\": 104,\n    \"uuid\": \"uniqueID\",\n    \"applicationFileName\": \"sampleNameUnique\",\n    \"packageName\": \"string\",\n    \"applicationCyclicRedundancyCheck\": \"string\",\n    \"applicationPattern\": \"string\",\n    \"companyName\": \"string\",\n    \"originalName\": \"string\",\n    \"productName\": \"string\",\n    \"internalName\": \"string\",\n    \"commandLine\": \"string\",\n    \"dynamicInitialVectorEnabled\": false,\n    \"EncryptionEnabled\": false,\n    \"EncryptionryptOnOpenEnabled\": false,\n    \"usableByTagging\": false,\n    \"whiteList\": [\n        \"string\"\n    ],\n    \"autoList\": [\n        \"string\"\n    ],\n    \"backupList\": [\n        \"string\"\n    ]\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2932,7 +2932,7 @@
 													}
 												},
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/softwares/:softwareId",
+													"raw": "http://testdlp.com:8080/admin/v2/updateSoftwarePack",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2942,14 +2942,7 @@
 													"path": [
 														"admin",
 														"v2",
-														"softwares",
-														":softwareId"
-													],
-													"variable": [
-														{
-															"key": "softwareId",
-															"value": ""
-														}
+														"updateSoftwarePack"
 													]
 												}
 											},
@@ -2961,7 +2954,7 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/softwares/:softwareId",
+													"raw": "http://testdlp.com:8080/admin/v2/deleteSoftwarePack?uuid=zoro",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2971,13 +2964,12 @@
 													"path": [
 														"admin",
 														"v2",
-														"softwares",
-														":softwareId"
+														"deleteSoftwarePack"
 													],
-													"variable": [
+													"query": [
 														{
-															"key": "softwareId",
-															"value": ""
+															"key": "uuid",
+															"value": "zoro"
 														}
 													]
 												}
@@ -2990,7 +2982,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/softwares?packageName&companyName",
+													"raw": "http://testdlp.com:8080/admin/v2/getSoftwarePack?packageName&companyName",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -3000,7 +2992,7 @@
 													"path": [
 														"admin",
 														"v2",
-														"softwares"
+														"getSoftwarePack"
 													],
 													"query": [
 														{
