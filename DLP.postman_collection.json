@@ -3107,6 +3107,153 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "Config",
+							"item": [
+								{
+									"name": "Create Config",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"configName\": \"sample_config_eee\",\n    \"documentPolicy\": \"\",\n    \"generalPolicy\": \"\",\n    \"hardwarePolicy\": \"\",\n    \"internetPolicy\": \"\",\n    \"monitoringPolicy\": \"\",\n    \"networkPolicy\": \"\",\n    \"printerPolicy\": \"\",\n    \"rebootPolicy\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/createConfig",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"createConfig"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete Config",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/deleteConfig?configName=sample_config_",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"deleteConfig"
+											],
+											"query": [
+												{
+													"key": "configName",
+													"value": "sample_config_"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Config List",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/getConfigList",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"getConfigList"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update Config List",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n            \"id\": 102,\n            \"configName\": \"sample_config_eee\",\n            \"documentPolicy\": \"pepe\",\n            \"generalPolicy\": \"\",\n            \"hardwarePolicy\": \"\",\n            \"internetPolicy\": \"\",\n            \"monitoringPolicy\": \"\",\n            \"networkPolicy\": \"zzzzz\",\n            \"printerPolicy\": \"\",\n            \"rebootPolicy\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/updateConfig",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"updateConfig"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				},
