@@ -2508,10 +2508,16 @@
 									},
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"groupName\": \"Azadi\",\n    \"parentName\": \"Vanak Branchk\",\n    \"config\": \"kid\"\n}",
+											"raw": "{\n    \"groupName\": \"zzzz\",\n    \"groupDescription\": \"samp g1 group\",\n    \"parentName\": \"\",\n    \"config\": \"\",\n    \"children\": []\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2539,9 +2545,15 @@
 									"name": "Remove Group",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
 										"url": {
-											"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=GF1",
+											"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=zzzz",
 											"protocol": "http",
 											"host": [
 												"testdlp",
@@ -2556,7 +2568,7 @@
 											"query": [
 												{
 													"key": "groupName",
-													"value": "GF1"
+													"value": "zzzz"
 												}
 											]
 										}
@@ -2567,31 +2579,15 @@
 									"name": "Get Group List",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
 										"url": {
-											"raw": "http://testdlp.com:8080/v2/plus/getGroupList",
-											"protocol": "http",
-											"host": [
-												"testdlp",
-												"com"
-											],
-											"port": "8080",
-											"path": [
-												"v2",
-												"plus",
-												"getGroupList"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get Config List",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://testdlp.com:8080/admin/v2/getConfigList",
+											"raw": "http://testdlp.com:8080/admin/v2/getGroupList",
 											"protocol": "http",
 											"host": [
 												"testdlp",
@@ -2601,7 +2597,75 @@
 											"path": [
 												"admin",
 												"v2",
-												"getConfigList"
+												"getGroupList"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Group",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "     {\n            \"id\": 2,\n            \"groupName\": \"zoro\",\n            \"groupDescription\": \"samp g1 group\",\n            \"parentName\": \"\",\n            \"children\": [],\n            \"config\": \"\"\n        }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/updateGroup",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"updateGroup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Is Group Name Unique",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/isGroupNameUnique?groupName=zoro1",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"isGroupNameUnique"
+											],
+											"query": [
+												{
+													"key": "groupName",
+													"value": "zoro1"
+												}
 											]
 										}
 									},
