@@ -2517,7 +2517,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"groupName\": \"zzzz\",\n    \"groupDescription\": \"samp g1 group\",\n    \"parentName\": \"\",\n    \"config\": \"\",\n    \"children\": []\n}",
+											"raw": "{\n    \"groupName\": \"bmp\",\n    \"groupDescription\": \"Kid Group\",\n    \"parentName\": \"Kid\",\n    \"children\": [\"\"],\n    \"groupConfigList\": [\n\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2553,7 +2553,7 @@
 											}
 										],
 										"url": {
-											"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=zzzz",
+											"raw": "http://testdlp.com:8080/admin/v2/deleteGroup?groupName=GrandFather",
 											"protocol": "http",
 											"host": [
 												"testdlp",
@@ -2568,7 +2568,7 @@
 											"query": [
 												{
 													"key": "groupName",
-													"value": "zzzz"
+													"value": "GrandFather"
 												}
 											]
 										}
@@ -2577,6 +2577,79 @@
 								},
 								{
 									"name": "Get Group List",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>Group Name</th>",
+													"        <th>Group Description</th>",
+													"        <th>Parent Name</th>",
+													"        <th>Children</th>",
+													"        <th>Group Config List</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response.data}}",
+													"        <tr>",
+													"            <td>{{groupName}}</td>",
+													"            <td>{{groupDescription}}</td>",
+													"            <td>{{parentName}}</td>",
+													"            <td>{{children}}</td>",
+													"            <td>",
+													"                <table class=\"innerTable\" border=\"1\">",
+													"                    <tr>",
+													"                        <th>Policy Name</th>",
+													"                        <th>Policy Type</th>",
+													"                        <th>Enable</th>",
+													"                        <th>Forward To Parent</th>",
+													"                        <th>Allow Inherit By Children</th>",
+													"                        <th>Allow Inherit From Parent</th>",
+													"                        <th>Inherited Parent Name</th>",
+													"                        <th>Inheritance Status</th>",
+													"                        <th>Dead Lock</th>",
+													"                    </tr>",
+													"                    {{#each groupConfigList}}",
+													"                        <tr>",
+													"                            <td>{{policyName}}</td>",
+													"                            <td>{{policyType}}</td>",
+													"                            <td>{{enable}}</td>",
+													"                            <td>{{forwardToParent}}</td>",
+													"                            <td>{{allowInheritByChildren}}</td>",
+													"                            <td>{{allowInheritFromParent}}</td>",
+													"                            <td>{{inheritedParentName}}</td>",
+													"                            <td>{{inheritanceStatus}}</td>",
+													"                            <td>{{deadLock}}</td>",
+													"                        </tr>",
+													"                    {{/each}}",
+													"                </table>",
+													"            </td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return { response: pm.response.json() }",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -2613,7 +2686,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "     {\n            \"id\": 2,\n            \"groupName\": \"zoro\",\n            \"groupDescription\": \"samp g1 group\",\n            \"parentName\": \"\",\n            \"children\": [],\n            \"config\": \"\"\n        }",
+											"raw": "{\n    \"groupName\": \"KidofKid23\",\n    \"groupDescription\": \"KidofKid23 Group\",\n    \"parentName\": \"Father\",\n    \"children\": [\"bmp\"],\n    \"groupConfigList\": []\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2649,7 +2722,7 @@
 											}
 										],
 										"url": {
-											"raw": "http://testdlp.com:8080/admin/v2/isGroupNameUnique?groupName=zoro1",
+											"raw": "http://testdlp.com:8080/admin/v2/isGroupNameUnique?groupName=g1",
 											"protocol": "http",
 											"host": [
 												"testdlp",
@@ -2664,8 +2737,86 @@
 											"query": [
 												{
 													"key": "groupName",
-													"value": "zoro1"
+													"value": "g1"
 												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Group Inheritance Test",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>Group Name</th>",
+													"        <th>Group Description</th>",
+													"        <th>Policy Type</th>",
+													"        <th>Is Empty Policy</th>",
+													"        <th>Name</th>",
+													"        <th>Applications UUID</th>",
+													"        <th>Additional Config</th>",
+													"        <th>Tags Name</th>",
+													"        <th>Classification</th>",
+													"    </tr>",
+													"    ",
+													"    {{#each response.g1.documentPolicyList}}",
+													"        <tr>",
+													"            <td>{{../groupName}}</td>",
+													"            <td>{{../groupDescription}}</td>",
+													"            <td>{{policyType}}</td>",
+													"            <td>{{isEmptyPolicy}}</td>",
+													"            <td>{{name}}</td>",
+													"            <td>{{applications.[0].uuid}}</td>",
+													"            <td>{{JSON.stringify(applications.[0].additionalConfig)}}</td>",
+													"            <td>{{../tags.[0].name}}</td>",
+													"            <td>{{../tags.[0].classification}}</td>",
+													"        </tr>",
+													"    {{/each}}",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    var res = pm.response.json();",
+													"    ",
+													"    return {response: res};",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/test",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"test"
 											]
 										}
 									},
@@ -2756,7 +2907,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"policyName\": \"p1\",\n    \"policyHeaders\": {\n        \"createTimeStamp\": \"1734593932\",\n        \"enable\": \"boolean\",\n        \"forwardToParent\": \"boolean\",\n        \"allowInheritByChildren\": \"boolean\",\n        \"allowInheritFromParent\": \"boolean\",\n        \"inheritedParentName\": \"parentName\",\n        \"inheritanceStatus\": \"boolean\",\n        \"deadLock\": \"boolean\",\n        \"isDirectPolicy\": \"boolean\",\n        \"isInheritedPolicy\": \"boolean\"\n    },\n    \"policyBody\": {\n        \"policyType\": \"Printer\",\n        \"isEmptyPolicy\": \"false\",\n        \"name\": \"p1\",\n        \"virtualPrinterControlEnabled\": \"false\",\n        \"physicalPrinterControlEnabled\": \"false\",\n        \"watermarkEnabled\": \"false\",\n        \"watermarkText\": \"hellow_text\",\n        \"watermarkOnTextEnabled\": \"false\",\n        \"customWatermarkEnabled\": \"false\",\n        \"watermarkColumnCount\": 1,\n        \"watermarkRowCount\": 1,\n        \"watermarkDegree\": 1,\n        \"watermarkFontName\": \"fontName\",\n        \"watermarkFontSize\": 1,\n        \"watermarkFontColor\": \"fontName\",\n        \"useIdentificationCode\": \"false\",\n        \"savePrintPreviewEnabled\": \"false\",\n        \"printerUsageLogEnabled\": \"false\",\n        \"grantPrintPermissionToUserByAdminEnabled\": \"false\"\n    }\n}",
+													"raw": "{\n    \"policyName\": \"p3\",\n    \"policyHeaders\": {\n        \"createTimeStamp\": \"1734593932\",\n        \"enable\": \"boolean\",\n        \"forwardToParent\": \"boolean\",\n        \"allowInheritByChildren\": \"boolean\",\n        \"allowInheritFromParent\": \"boolean\",\n        \"inheritedParentName\": \"parentName\",\n        \"inheritanceStatus\": \"boolean\",\n        \"deadLock\": \"boolean\",\n        \"isDirectPolicy\": \"boolean\",\n        \"isInheritedPolicy\": \"boolean\"\n    },\n    \"policyBody\": {\n        \"policyType\": \"Document\",\n        \"isEmptyPolicy\": \"false\",\n        \"name\": \"p2\",\n        \"inactiveWhenNetworkDisconnectedEnabled\": \"boolean\",\n        \"inactiveTimeoutWhenNetworkDisconnected\": 0,\n        \"directEncryptionAllowed\": \"boolean\",\n        \"directDecryptionAllowed\": \"boolean\",\n        \"sendRequestedFilesToServerEnabled\": \"boolean\",\n        \"shadowCopyEnabled\": \"boolean\",\n        \"reportFilesCryptographyEnabled\": \"boolean\",\n        \"saveCryptoKeyInUserSystemEnabled\": \"boolean\",\n        \"violationLoggingEnabled\": \"boolean\",\n        \"maximumAllowedCharactersForCopy\": 0,\n        \"autoEncryptionEnabled\": \"boolean\",\n        \"applicationPackagesEncryptionEnabled\": \"boolean\",\n        \"permanentAutoCryptographyEnabled\": \"boolean\",\n        \"checkSystemOnRestartEnabled\": \"boolean\",\n        \"scanExistingFilesEnabled\": \"boolean\",\n        \"EncryptionryptExternalStorageFilesEnabled\": \"boolean\",\n        \"autoEncryptionFileExtension\": \"string\",\n        \"hotFolders\": [\n            \"string\"\n        ],  \n        \"coolFolders\": [\n            \"string\"\n        ],\n        \"externalStorageControl\": \"boolean\",\n        \"externalControlPolicyList\": [{\n            \"typeGroup\": \"string\",\n            \"blockCopyToExternal\": \"boolean\",\n            \"blockCopyToShare\": \"boolean\",\n            \"blockReadFromExternal\": \"boolean\",\n            \"blockReadFromShare\": \"boolean\",\n            \"limitWriteSize\": 0\n        }],\n        \"applications\": [{\n            \"uuid\": \"AZaz09\",\n            \"additionalConfig\": {\n                \"antiRansomwareEnabledDocument\": \"boolean\",\n                \"cryptographyEnabledDocument\": \"boolean\",\n                \"justDecryptionEnabledDocument\": \"boolean\",\n                \"clipboardControlEnabledDocument\": \"boolean\",\n                \"imagingControlEnabledDocument\": \"boolean\",\n                \"printControlEnabledDocument\": \"boolean\",\n                \"applyWatermarkEnabledDocument\": \"boolean\",\n                \"networkControlEnabledDocument\": \"boolean\",\n                \"cryptographyInOleEnabledDocument\": \"boolean\",\n                \"onlyDecryptionInOleEnabledDocument\": \"boolean\"\n            }\n        }],\n        \"tags\": [{\n            \"name\": \"string\",\n            \"tagName\": \"string\",\n            \"classification\": \"string\",\n            \"fileAutoTaggingEnabled\": \"boolean\",\n            \"manualAddTaggingByUserEnabled\": \"boolean\",\n            \"manualRemoveTaggingByUserEnabled\": \"boolean\",\n            \"documentsCryptoEnabled\": \"boolean\",\n            \"readOnlyEnabled\": \"boolean\",\n            \"recordingSuspensionOnTaggedFileOpeningEnabled\": \"boolean\",\n            \"clipboardControlEnabled\": \"boolean\",\n            \"printControlEnabled\": \"boolean\",\n            \"addWatermarkEnabled\": \"boolean\",\n            \"autoTaggingHotFolders\": [\n                \"string\"\n            ],\n            \"keyWords\": [\n                \"string\"\n            ],\n            \"autoTaggingFileExtensions\": [\n                \"string\"\n            ],\n            \"taggedFileAccessControlApplications\": [\n                \"String\"\n            ],\n            \"autoTaggingApplications\": [\n                \"String\"\n            ]\n        }]\n    }\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2764,7 +2915,7 @@
 													}
 												},
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/createNewPolicy?policyType=Printer",
+													"raw": "http://testdlp.com:8080/admin/v2/createNewPolicy?policyType=Document",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2779,7 +2930,7 @@
 													"query": [
 														{
 															"key": "policyType",
-															"value": "Printer"
+															"value": "Document"
 														}
 													]
 												}
@@ -2798,7 +2949,7 @@
 													}
 												],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/deletePolicy?policyName=HQHardwarePolicy",
+													"raw": "http://testdlp.com:8080/admin/v2/deletePolicy?policyName=p1",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2813,7 +2964,7 @@
 													"query": [
 														{
 															"key": "policyName",
-															"value": "HQHardwarePolicy"
+															"value": "p1"
 														}
 													]
 												}
@@ -2832,7 +2983,7 @@
 													}
 												],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/getPolicyList?page&pageSize&policyType&q",
+													"raw": "http://testdlp.com:8080/admin/v2/getPolicyList?page&pageSize&policyType=Printer&q",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2857,7 +3008,7 @@
 														},
 														{
 															"key": "policyType",
-															"value": null,
+															"value": "Printer",
 															"description": "(optional options) general|document|hardware|internet|printer|monitoring|network"
 														},
 														{
@@ -2882,7 +3033,7 @@
 													}
 												],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/searchPolicy?policyType=Document1&policyName=p1",
+													"raw": "http://testdlp.com:8080/admin/v2/searchPolicy?policyType=Printer&policyName=p1",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2897,7 +3048,7 @@
 													"query": [
 														{
 															"key": "policyType",
-															"value": "Document1",
+															"value": "Printer",
 															"description": "<Enum>"
 														},
 														{
@@ -2922,7 +3073,7 @@
 													}
 												],
 												"url": {
-													"raw": "http://testdlp.com:8080/admin/v2/getPolicyInfo?policyName=p3",
+													"raw": "http://testdlp.com:8080/admin/v2/getPolicyInfo?policyName=p1",
 													"protocol": "http",
 													"host": [
 														"testdlp",
@@ -2937,7 +3088,7 @@
 													"query": [
 														{
 															"key": "policyName",
-															"value": "p3"
+															"value": "p1"
 														}
 													]
 												}
@@ -3191,7 +3342,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"configName\": \"sample_config_eee\",\n    \"documentPolicy\": \"\",\n    \"generalPolicy\": \"\",\n    \"hardwarePolicy\": \"\",\n    \"internetPolicy\": \"\",\n    \"monitoringPolicy\": \"\",\n    \"networkPolicy\": \"\",\n    \"printerPolicy\": \"\",\n    \"rebootPolicy\": \"\"\n}",
+											"raw": "{\n    \"configName\": \"1\",\n    \"documentPolicy\": \"\",\n    \"generalPolicy\": \"\",\n    \"hardwarePolicy\": \"\",\n    \"internetPolicy\": \"\",\n    \"monitoringPolicy\": \"\",\n    \"networkPolicy\": \"\",\n    \"printerPolicy\": \"\",\n    \"rebootPolicy\": \"\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3312,6 +3463,34 @@
 												"admin",
 												"v2",
 												"updateConfig"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check config name unique",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/isConfigNameUnique?configName=1",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"isConfigNameUnique"
+											],
+											"query": [
+												{
+													"key": "configName",
+													"value": "1"
+												}
 											]
 										}
 									},
