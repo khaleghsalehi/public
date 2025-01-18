@@ -2517,7 +2517,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"groupName\": \"bmp\",\n    \"groupDescription\": \"Kid Group\",\n    \"parentName\": \"Kid\",\n    \"children\": [\"\"],\n    \"groupConfigList\": [\n\n    ]\n}",
+											"raw": "{\n    \"groupName\": \"Liphan\",\n    \"groupDescription\": \"Liphan Group\",\n    \"parentName\": \"GrandFather\",\n    \"children\": [\"\"],\n    \"groupConfigList\": [\n\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2686,7 +2686,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"groupName\": \"KidofKid23\",\n    \"groupDescription\": \"KidofKid23 Group\",\n    \"parentName\": \"Father\",\n    \"children\": [\"bmp\"],\n    \"groupConfigList\": []\n}",
+											"raw": "{\n    \"groupName\": \"GrandFather\",\n    \"groupDescription\": \"Grandfather Group\",\n    \"parentName\": \"\",\n    \"children\": [\n        \"Father\",\"Orphan\",\"Elphan\",\"Liphan\"\n    ],\n    \"groupConfigList\": [\n        {\n            \"configName\": \"GrandFather_Config_Document_1\",\n            \"policyName\": \"GF_Document_Policy_1\",\n            \"policyType\": \"Document\",\n            \"enable\": \"true\",\n            \"forwardToParent\": \"true\",\n            \"allowInheritByChildren\": \"true\",\n            \"allowInheritFromParent\": \"true\",\n            \"inheritedParentName\": \"String\",\n            \"inheritanceStatus\": \"false\", \n            \"deadLock\": \"false\"\n        },\n        {\n            \"configName\": \"GrandFather_Config_Printer_1\",\n            \"policyName\": \"GF_Printer_Policy_1\",\n            \"policyType\": \"Printer\",\n            \"enable\": \"true\",\n            \"forwardToParent\": \"true\",\n            \"allowInheritByChildren\": \"true\",\n            \"allowInheritFromParent\": \"true\",\n            \"inheritedParentName\": \"String\",\n            \"inheritanceStatus\": \"false\",\n            \"deadLock\": \"false\"\n        },\n        {\n            \"configName\": \"GrandFather_Config_Printer_2\",\n            \"policyName\": \"GF_Printer_Policy_2\",\n            \"policyType\": \"Printer\",\n            \"enable\": \"true\",\n            \"forwardToParent\": \"true\",\n            \"allowInheritByChildren\": \"true\",\n            \"allowInheritFromParent\": \"true\",\n            \"inheritedParentName\": \"String\",\n            \"inheritanceStatus\": \"false\",\n            \"deadLock\": \"false\"\n        }\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2817,6 +2817,31 @@
 												"admin",
 												"v2",
 												"test"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Group Parent And  Child Depended",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://testdlp.com:8080/admin/v2/checkGroupParentChildDepended",
+											"protocol": "http",
+											"host": [
+												"testdlp",
+												"com"
+											],
+											"port": "8080",
+											"path": [
+												"admin",
+												"v2",
+												"checkGroupParentChildDepended"
 											]
 										}
 									},
